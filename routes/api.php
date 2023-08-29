@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\PermissionManagementController;
+use App\Http\Controllers\Auth\RoleManagementController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['prefix'=>'user'],function(){
+    Route::apiResources([
+        'role'  =>RoleManagementController::class,
+        'permission'    =>  PermissionManagementController::class,
+    ]);
 });
