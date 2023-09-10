@@ -27,3 +27,5 @@ Route::group(['prefix'=>'user'],function(){
         'permission'    =>  PermissionManagementController::class,
     ]);
 });
+
+Route::post('/login',[AuthController::class,'LogIn']);
