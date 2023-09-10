@@ -15,7 +15,7 @@ class UserPermission extends Migration
     {
        Schema::create('user_permission',function(Blueprint $table){
               $table->id();
-              $table->string('permission_id',100)->nullable(false);
+              $table->string('permission_id',100)->unique()->nullable(false);
               $table->string('role_id',50)->nullable(false);
               $table->string('object',25)->nullable(false);
               $table->string('permission',25)->nullable(false);
