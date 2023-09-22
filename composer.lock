@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9183e4c9df9072952e24607fabb7a893",
+    "content-hash": "5d496cb858707fb3ad645889339cc9f2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6000,28 +6000,31 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.10.2",
+            "version": "v4.16.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "3b1220b71ee08ac7be6be074635df50c2b83ab51"
+                "reference": "4ae05205499a20a458110243c7c1be6deebfe12f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/3b1220b71ee08ac7be6be074635df50c2b83ab51",
-                "reference": "3b1220b71ee08ac7be6be074635df50c2b83ab51",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/4ae05205499a20a458110243c7c1be6deebfe12f",
+                "reference": "4ae05205499a20a458110243c7c1be6deebfe12f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laravel/framework": "^8.37|^9.0",
-                "php": "^7.3|^8.0",
+                "laravel/framework": "^8.37|^9.0|^10.0",
+                "php": "^8.0",
                 "symfony/var-dumper": "^5.0|^6.0"
             },
             "require-dev": {
                 "ext-gd": "*",
                 "guzzlehttp/guzzle": "^6.0|^7.0",
-                "orchestra/testbench": "^6.0|^7.0"
+                "laravel/octane": "^1.4",
+                "orchestra/testbench": "^6.0|^7.0|^8.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -6062,9 +6065,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/telescope/issues",
-                "source": "https://github.com/laravel/telescope/tree/v4.10.2"
+                "source": "https://github.com/laravel/telescope/tree/v4.16.3"
             },
-            "time": "2022-12-19T11:20:10+00:00"
+            "time": "2023-09-19T15:59:57+00:00"
         },
         {
             "name": "mockery/mockery",
