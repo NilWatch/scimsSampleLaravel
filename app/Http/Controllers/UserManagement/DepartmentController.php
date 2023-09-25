@@ -14,7 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -61,4 +61,7 @@ class DepartmentController extends Controller
     {
         //
     }
+
+    
+
 }
