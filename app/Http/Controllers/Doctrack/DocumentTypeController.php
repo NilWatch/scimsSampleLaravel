@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\UserManagement;
+namespace App\Http\Controllers\Doctrack;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class DocumentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -61,7 +61,4 @@ class DepartmentController extends Controller
     {
         //
     }
-
-    
-
 }
