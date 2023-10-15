@@ -29,3 +29,4 @@ Route::group(['prefix'=>'user'],function(){
 });
 
 Route::post('/login',[AuthController::class,'LogIn']);
+Route::resource('/users', UsersController::class);

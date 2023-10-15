@@ -22,7 +22,7 @@ class User extends Authenticatable
         'user_id',
         'username',
         'job_position',
-        'full_name',
+        'fullname',
         'department',
         'division',
         'password',

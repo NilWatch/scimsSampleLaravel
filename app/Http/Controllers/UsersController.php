@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -13,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return response()->json(['users' => $users]);
     }
 
     /**
@@ -22,9 +25,20 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $validatedData = $request->validate([
+            'username' => 'required|unique:user_accounts',
+            'job_position' => 'required',
+            'fullname' => 'required',
+            'department' => 'required',
+            'division' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::create($validatedData);
+
+        return response()->json(['user' => $user], 201);
     }
 
     /**
@@ -35,7 +49,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(['user' => $id]);
     }
 
     /**
@@ -45,9 +59,19 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user): JsonResponse
     {
-        //
+        $validatedData = $request->validate([
+            'username' => 'required|unique:user_accounts,username,' . $user->id,
+            'job_position' => 'required',
+            'fullname' => 'required',
+            'department' => 'required',
+            'division' => 'required',
+        ]);
+
+        $user->update($validatedData);
+
+        return response()->json(['user' => $user]);
     }
 
     /**
@@ -56,8 +80,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user ): JsonResponse
     {
-        //
+        $user->delete();
+        return response()->json(['message'=>'User deleted Successfully']);
     }
+
 }
