@@ -29,5 +29,5 @@ Route::group(['prefix'=>'user'],function(){
 });
 
 Route::post('/login',[AuthController::class,'LogIn']);
-Route::apiResource(['/user' => User::class] );
+Route::apiResource('/users', UsersController::class);
 // Route::get('/view-user',[UsersController::class,'show']);
