@@ -7,7 +7,7 @@ use App\Models\VamosIndividual;
 
 class VamosIndividualController extends Controller
 {
-    public function findRecords(Request $request)
+    public function findRecord(Request $request)
     {
        $records = VamosIndividual::search($request->input('query'))->get();
        return response()->json($records);

@@ -6,6 +6,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PermissionManagementController;
 use App\Http\Controllers\Auth\RoleManagementController;
+use App\Http\Controllers\VamosIndividualController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,5 +31,6 @@ Route::group(['prefix'=>'user'],function(){
 });
 
 Route::post('/login',[AuthController::class,'LogIn']);
-Route::apiResource('/users', UsersController::class);
+Route::post('/search-data', [VamosIndividualController::class, 'findRecord']);
+// Route::apiResource('/users', UsersController::class);
 // Route::get('/view-user',[UsersController::class,'show']);
