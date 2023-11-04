@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PermissionManagementController;
 use App\Http\Controllers\Auth\RoleManagementController;
+use App\Http\Controllers\UserManagement\DepartmentController;
 use App\Http\Controllers\VamosIndividualController;
 
 /*
@@ -32,5 +33,6 @@ Route::group(['prefix'=>'user'],function(){
 
 Route::post('/login',[AuthController::class,'LogIn']);
 Route::post('/search-data', [VamosIndividualController::class, 'findRecord']);
+Route::get('/department-with-division-sec',[DepartmentController::class, 'fetchDepDivSecInfo']);
 // Route::apiResource('/users', UsersController::class);
 // Route::get('/view-user',[UsersController::class,'show']);

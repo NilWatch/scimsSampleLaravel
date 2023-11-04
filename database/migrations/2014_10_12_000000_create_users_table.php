@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('fullname',50);
             $table->string('department',100);
             $table->string('division',100);
+            $table->string('section',100);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -8,8 +8,16 @@ use App\Models\VamosIndividual;
 class VamosIndividualController extends Controller
 {
     public function findRecord(Request $request)
-    {
-       $records = VamosIndividual::search($request->input('query'))->get();
-       return response()->json($records);
+        {
+        $query = $request->input('query');
+
+        if (empty($query)) {
+            return response()->json([]); // No query provided, return an empty result
+        }
+
+        $perPage = 5; // Number of items per page, adjust as needed
+        $records = VamosIndividual::search($query)->orderBy('entity_no','asc')->paginate($perPage);
+
+        return response()->json($records);
     }
 }

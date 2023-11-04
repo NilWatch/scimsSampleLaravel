@@ -39,14 +39,6 @@ class VamosIndividual extends Model
             'firstname' => $this->firstname,
             'middlename' => $this->middlename,
             'lastname' => $this->lastname,
-            'suffix1' => $this->suffix1,
-            'gender' => $this->gender,
-            'birthdate' => $this->birthdate,
-            'mobile_no' => $this->mobile_no,
-            'street' => $this->street,
-            'barangay' => $this->barangay,
-            'city' => $this->city,
-            'province' => $this->province,
             'email' => $this->email,
         ];
         return $array;

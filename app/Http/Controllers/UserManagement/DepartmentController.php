@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\UserManagement;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -12,11 +13,17 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    // public function fetchDptInfo()
+    // {
+    //     $dpt = Department::all();
+
+    //     return response()->json($dpt);
+    // }
+    public function fetchDepDivSecInfo()
     {
-
+        $dpt = Department::with('divisions.sections')->get();
+        return response()->json($dpt);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -62,6 +69,6 @@ class DepartmentController extends Controller
         //
     }
 
-    
+
 
 }

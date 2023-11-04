@@ -25,6 +25,7 @@ class User extends Authenticatable
         'fullname',
         'department',
         'division',
+        'section',
         'password',
     ];
 
