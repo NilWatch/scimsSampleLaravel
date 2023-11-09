@@ -34,5 +34,6 @@ Route::group(['prefix'=>'user'],function(){
 Route::post('/login',[AuthController::class,'LogIn']);
 Route::post('/search-data', [VamosIndividualController::class, 'findRecord']);
 Route::get('/department-with-division-sec',[DepartmentController::class, 'fetchDepDivSecInfo']);
+Route::post('/insertUserData', [UsersController::class, 'insertUserData']);
 // Route::apiResource('/users', UsersController::class);
 // Route::get('/view-user',[UsersController::class,'show']);
