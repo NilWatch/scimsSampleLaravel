@@ -27,6 +27,7 @@ class AccountType extends Migration
             $table->string('barangay_sys',100);
             $table->string('let_sys',100);
             $table->string('pnp_sys',100);
+            $table->foreign('entity_no')->references('entity_no')->on('user_accounts')->onDelete('cascade');
             $table->timestamps();
             // $table->foreign('entity_no')->references('role_id')->on('role_management');
 

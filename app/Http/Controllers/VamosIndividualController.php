@@ -16,7 +16,7 @@ class VamosIndividualController extends Controller
         }
 
         $perPage = 5; // Number of items per page, adjust as needed
-        $records = VamosIndividual::search($query)->orderBy('entity_no','asc')->paginate($perPage);
+        $records = VamosIndividual::search($query)->orderBy('created_at','desc')->take($perPage)->get();
 
         return response()->json($records);
     }

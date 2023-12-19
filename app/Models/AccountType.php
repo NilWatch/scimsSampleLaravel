@@ -30,12 +30,14 @@ class AccountType extends Model
         static::creating(function ($accountType) {
             // Generate a unique 6-character account_type_id consisting of 3 letters and 3 integers
             do {
-                $letters = Str::random(3); // Generate 3 random letters
-                $numbers = str_pad(rand(100, 999), 3, '0', STR_PAD_LEFT); // Generate 3 random integers between 100 and 999
-                $account_type_id = $letters . $numbers; // Combine letters and numbers
-            } while (self::where('account_type_id', $account_type_id)->exists());
+                $account_type_id = (string) Str::uuid(); // Combine letters and numbers
+            } while (self::whereAccount_type_id( $account_type_id)->exists());
 
             $accountType->account_type_id = $account_type_id;
         });
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'entity_no', 'entity_no');
     }
 }

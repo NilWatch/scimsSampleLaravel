@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
+
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -49,4 +51,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function accountType()
+    {
+        return $this->hasOne(AccountType::class, 'entity_no', 'entity_no')->withDefault();
+    }
+    public function toSearchableArray(): array
+    {
+        $array = [
+            'id' => $this->id,
+            'entity_no' => $this->entity_no,
+            'fullname' => $this->firstname,
+            'username' => $this->middlename,
+
+        ];
+        return $array;
+    }
 }

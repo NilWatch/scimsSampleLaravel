@@ -18,7 +18,11 @@ class UsersController extends Controller
     public function index()
     {
 
-        // return User::orderBy('created_at', 'desc')->limit(10)->get();
+        return User::with('accountType')
+        ->select('id', 'entity_no', 'user_id', 'username', 'job_position', 'fullname', 'department', 'division', 'section', 'created_at', 'updated_at')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get();
     }
 
     /**
@@ -27,7 +31,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function insertUserData(Request $request): JsonResponse
+    public function store(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
             'entity_no' => 'required',
@@ -45,10 +49,8 @@ class UsersController extends Controller
         ]);
 
         do {
-            $letters = Str::random(6);
-            $numbers = rand(1000,9999);
-            $user_id = $letters.$numbers;
-        } while (User::where('user_id', $user_id)->exists());
+            $user_id = (string) Str::uuid();
+        } while (User::whereUser_id($user_id)->exists());
 
         // Step 1: Create a new user record in userTable
         $user = User::create([
@@ -84,7 +86,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['user' => $id]);
+        return response()->json(['entity_no' => $id]);
     }
 
     /**
@@ -102,6 +104,7 @@ class UsersController extends Controller
             'fullname' => 'required',
             'department' => 'required',
             'division' => 'required',
+            'section' => 'required'
         ]);
 
         $user->update($validatedData);
@@ -120,5 +123,22 @@ class UsersController extends Controller
         $user->delete();
         return response()->json(['message'=>'User deleted Successfully']);
     }
+
+    // public function searchUsers(Request $request)
+    // {
+    //     // Get the search query from the request
+    //     $searchQuery = $request->input('keyword');
+
+    //     // Use Eloquent to search for users with names containing the search query
+    //     $users = User::where('entity_no', 'LIKE', "%$searchQuery%")
+    //         ->orWhere('fullname', 'LIKE', "%$searchQuery%")
+    //         ->orWhere('user_id', 'LIKE', "%$searchQuery%")
+    //         ->orWhere('username', 'LIKE', "%$searchQuery%")
+    //         ->get();
+
+    //     // Return the search results as JSON
+    //     return response()->json( $users::with('accounType'));
+    // }
+
 
 }

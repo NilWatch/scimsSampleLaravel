@@ -8,17 +8,6 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function fetchDptInfo()
-    // {
-    //     $dpt = Department::all();
-
-    //     return response()->json($dpt);
-    // }
     public function fetchDepDivSecInfo()
     {
         $dpt = Department::with('divisions.sections')->get();
